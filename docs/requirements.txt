@@ -7,3 +7,6 @@ sphinx-markdown-tables
 
 # crate-docs-theme
 sphinx-rtd-theme
+
+setuptools==63.2.0
+readthedocs-sphinx-search==0.1.1
