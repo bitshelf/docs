@@ -1,0 +1,15 @@
+myst-parser
+recommonmark
+Markdown
+sphinx
+docutils
+sphinx-copybutton
+sphinx_markdown_tables
+sphinx_rtd_theme==0.5.2
+sphinx_design==0.2.0
+sphinxext-opengraph==0.6.3
+sphinxext-rediraffe==0.2.7
+sphinxcontrib.mermaid~=0.7.1
+sphinx-rtd-theme
+setuptools
+readthedocs-sphinx-search
