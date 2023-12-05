@@ -5,4 +5,5 @@ RK 烧录工具
 .. toctree::
    :maxdepth: 1
    
+   xshell调试串口字符高亮配置
    SD卡升级固件
