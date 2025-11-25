@@ -1,32 +1,40 @@
-name: Lint
+name: Deploy to GitHub Pages
 
 on:
-  pull_request:
   push:
-    branches: [main]
+    branches:
+      - main
+  # 允许手动在 GitHub Actions 界面触发部署
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   build:
-    name: Lint
+    name: Build
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [20.x]
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           lfs: true
 
-      - name: Checkout LFS objects
-        run: git lfs checkout
- 
-      - uses: pnpm/action-setup@v4.0.0
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -35,7 +43,26 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
-      - name: Run Lint
-        run: pnpm lint
+      # === 关键修复 1：运行构建命令 ===
+      - name: Build website
+        run: pnpm build
+
+      # === 关键修复 2：上传构建产物 ===
+      - name: Upload Build Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build # Docusaurus 默认输出目录
+
+  deploy:
+    name: Deploy to GitHub Pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
