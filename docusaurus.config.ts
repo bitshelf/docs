@@ -81,6 +81,20 @@ const config: Config = {
     ],
   ],
 
+  themes: [
+    // ... Your other themes.
+    '@docusaurus/theme-mermaid',
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        indexPages: true,
+        highlightSearchTermsOnTargetPage: true,
+        language: ['en', 'zh']
+      }
+    ]
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
