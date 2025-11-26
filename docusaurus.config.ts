@@ -30,15 +30,15 @@ const config: Config = {
   onBrokenLinks: 'throw',
 
   i18n: {
-    defaultLocale: 'zh-cn',
-    locales: ['en', 'zh-cn'],
+    defaultLocale: 'zh-Hans',
+    locales: ['zh-Hans', 'en'],
     localeConfigs: {
-      en: {
-        label: 'English',
+      'zh-Hans': {
+        label: '中文（中国）',
         direction: 'ltr'
       },
-      'zh-cn': {
-        label: '中文（中国）',
+      en: {
+        label: 'English',
         direction: 'ltr'
       }
     }
@@ -98,9 +98,9 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: '文档',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/blog', label: '博客', position: 'left'},
         {
            type: 'localeDropdown',
            position: 'right'
