@@ -1,0 +1,14 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.GettingStarted": {
+    "message": "GettingStarted",
+    "description": "The label for category 'GettingStarted' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Linux": {
+    "message": "Linux",
+    "description": "The label for category 'Linux' in sidebar 'tutorialSidebar'"
+  }
+}

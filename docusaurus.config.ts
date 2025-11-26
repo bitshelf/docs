@@ -29,12 +29,23 @@ const config: Config = {
 
   onBrokenLinks: 'throw',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'zh-CN',
-    locales: ['zh-CN'],
+    defaultLocale: 'zh-cn',
+    locales: ['en', 'zh-cn'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr'
+      },
+      'zh-cn': {
+        label: '中文（中国）',
+        direction: 'ltr'
+      }
+    }
+  },
+
+  markdown: {
+    mermaid: true,
   },
 
   presets: [
@@ -90,6 +101,10 @@ const config: Config = {
           label: 'Tutorial',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
+        {
+           type: 'localeDropdown',
+           position: 'right'
+         }
       ],
     },
     prism: {
