@@ -4,6 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const isProd = process.env.VERCEL === '1';
 const config: Config = {
   title: 'JZ Loh\'s notebook',
   tagline: 'Embeded notebook',
@@ -16,10 +17,10 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://bitshelf.github.io',
+  url: isProd ? 'https://bitshelf.github.io': 'https://docs-rose-pi-94.vercel.app/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/docs/',
+  baseUrl: isProd ? '/' : '/docs/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
