@@ -32,7 +32,7 @@ $ sudo pip install pyelftools
 
 openjdk-8-jdk 默认会安装到`/usr/lib/jvm/java-8-openjdk-amd64`，如果不是安装在此目录下，在编译前修改编译脚本 make.sh。确保编译android 使用 openjdk 1.8
 
-```shell
+```shell bash
 sudo apt-get install openjdk-8-jdk
 ```
 

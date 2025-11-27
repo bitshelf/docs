@@ -52,8 +52,14 @@ const config: Config = {
     [
       'classic',
       {
-        docs: {
-          sidebarPath: './sidebars.ts',
+         docs: {
+           sidebarPath: './sidebars.ts',
+           remarkPlugins: [
+             [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
+           ],
+         },
+         pages: {
+          remarkPlugins: [require('@docusaurus/remark-plugin-npm2yarn')],
         },
         blog: {
           showReadingTime: true,
@@ -65,6 +71,12 @@ const config: Config = {
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
+          remarkPlugins: [
+            [
+              require('@docusaurus/remark-plugin-npm2yarn'),
+              {converters: ['pnpm']},
+            ],
+          ],
         },
         theme: {
           customCss: './src/css/custom.css',
